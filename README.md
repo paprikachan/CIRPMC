@@ -72,7 +72,7 @@ Out file is a csv file, stores the predicted results from CIRPMC:
 * NN: The predicted critical illness probablity from neural network
 * Probability: The predicted critical illness probablity from our ensemble model CIRPMC
 * Cluster: The predicted critical illness status, 0 or 1.
-* Risk group: The stratified risk group, Critical or Non-critical.
+* Risk group: The stratified risk group, Non-critical or Critical.
 
 
 ## Cite us
