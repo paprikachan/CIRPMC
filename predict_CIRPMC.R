@@ -1,8 +1,11 @@
 #!/usr/bin/env Rscript
+# install.packages('caret', repos = "http://cran.us.r-project.org")
+library(caret)
+
 run <- function(infile, outfile){
-  load('data.Rdata')
+  load('./data.RData')
   
-  tmp <- read.csv('features.csv')
+  tmp <- read.csv('./features.csv')
   tmp$X <- NULL
   fs <- as.vector(t(tmp)[, 1])
   # infile <- 'server/test_X.csv'
@@ -12,8 +15,7 @@ run <- function(infile, outfile){
     X[[f]] <- as.numeric(X[[f]])
   }
   pred_df <- pred_models(model_list, X[, fs])
-  print(pred_df)
-  write.csv(pred_df, outfile, row.names = F)
+  write.csv(pred_df, outfile, row.names = F, quote=F)
 }
 
 pred_models <- function(model_list, X){ 
