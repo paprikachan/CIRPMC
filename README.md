@@ -51,7 +51,6 @@ predict_CIRPMC.R -i test_X.csv -o pred_Y.csv
 
 ### Input file
 
-CRP, C reactive protein. PCT, procalcitonin. TNF-α, tumor necrosis factor α. IL-1 β, interleukin 1β. IL-2R, IL-6, interleukin 6. IL-8, interleukin 8. IL-10, interleukin 10. 
 
 Input file is a csv file, stores the measurements of 7 inflammatory markers for each patient:
 * IL-1β   (pg/mL, < 5.0)
