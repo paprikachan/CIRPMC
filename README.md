@@ -9,9 +9,7 @@ CIRPMC: Critical Illness Risk Prediction Model for COVID-19
 * caret
 
 
-
 ## Installation
-
 
 ### Installation from Github
 To clone the repository and install manually, run the following from a terminal:
@@ -22,8 +20,7 @@ cd CIRPMC
 
 ## Usage
 
-### Quick start
-The following code runs CIRPMC.
+### Help page
 
 In command line:
 ```shell
@@ -40,10 +37,19 @@ Options:
                 Show this help message and exit
 ```
 
+### Quick start
+The following code runs an example of CIRPMC.
+
 ```shell
 predict_CIRPMC.R -i test_X.csv -o pred_Y.csv
 ```
 
+## File format
+
+### Input file
+
+
+### Output file
 
 ## Cite us
 
