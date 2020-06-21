@@ -68,7 +68,7 @@ Out file is a csv file, stores the predicted results from CIRPMC:
 * LR: The predicted critical illness probablity from logistic regression
 * SVM: The predicted critical illness probablity from supported vector machine
 * RF: The predicted critical illness probablity from random forest
-* GBDT: The predicted critical illness probablity from gradient boost decistion tree
+* GBDT: The predicted critical illness probablity from gradient boosted decision tree
 * NN: The predicted critical illness probablity from neural network
 * Probability: The predicted critical illness probablity from our ensemble model CIRPMC
 * Cluster: The predicted critical illness status, 0 or 1.
