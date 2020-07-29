@@ -53,10 +53,10 @@ predict_CIRPMC.R -i test_X.csv -o pred_y.csv
 
 
 Input file is a csv file, stores the measurements of four inflammatory markers for each patient:
-* TNF-α (pg/mL, > 0, < 8.1)
+* TNF-α (pg/mL, 0-8.1)
 * CRP   (mg/L,  > 0)
-* IL-2R (pg/mL, > 223, < 710)
-* IL-6  (pg/mL, > 0, < 7.0)
+* IL-2R (pg/mL, 223-710)
+* IL-6  (pg/mL, 0-7.0)
 
 Note: TNF-α, tumor necrosis factor α. CRP, C reactive protein. IL-2R, interleukin 2R. IL-6, interleukin 6.
 
