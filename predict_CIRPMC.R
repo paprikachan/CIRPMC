@@ -1,11 +1,8 @@
 #!/usr/bin/env Rscript
-# install.packages('caret', repos = "http://cran.us.r-project.org")
-library(caret)
-
 run <- function(infile, outfile){
-  load('./data.RData')
+  load('data.Rdata')
   
-  tmp <- read.csv('./features.csv')
+  tmp <- read.csv('features.csv')
   tmp$X <- NULL
   fs <- as.vector(t(tmp)[, 1])
   # infile <- 'server/test_X.csv'
@@ -15,20 +12,23 @@ run <- function(infile, outfile){
     X[[f]] <- as.numeric(X[[f]])
   }
   pred_df <- pred_models(model_list, X[, fs])
-  write.csv(pred_df, outfile, row.names = F, quote=F)
+  write.csv(pred_df, outfile, row.names = F)
 }
 
 pred_models <- function(model_list, X){ 
+  model_list <- model_list$model_list
   LR_y_pred <- pred_func(model_list$LR, X)
   SVM_y_pred <- pred_func(model_list$SVM, X)
-  RF_y_pred <- pred_func(model_list$RF, X)
   GBDT_y_pred <- pred_func(model_list$GBDT, X)
+  KNN_y_pred <- pred_func(model_list$KNN, X)
   NN_y_pred <- pred_func(model_list$NN, X)
-  df <- data.frame("LR"=LR_y_pred, "SVM"=SVM_y_pred, "RF"=RF_y_pred, "GBDT"=GBDT_y_pred, 'NN'=NN_y_pred)
+  df <- data.frame("LR"=LR_y_pred, "SVM"=SVM_y_pred, 
+                   "GBDT"=GBDT_y_pred, "KNN"=KNN_y_pred,
+                   'NN'=NN_y_pred)
   rownames(df) <- rownames(X)
-  colnames(df) <- c('LR', 'SVM', 'RF', 'GBDT', 'NN')
-  df$Probability <- df$LR*.09 + df$GBDT*0.9 +  df$NN*.01
-  df$Cluster <- as.factor(as.numeric(df$Probability > 0.5))
+  colnames(df) <- c('LR', 'SVM', 'GBDT', 'KNN', 'NN')
+  df$Probability <- df$SVM
+  df$Cluster <- as.factor(as.numeric(df$Probability >= 0.5))
   df$`Risk group`[df$Cluster == '0'] <- 'Non critical'
   df$`Risk group`[df$Cluster == '1'] <- 'Critical'
   return(df)
