@@ -1,7 +1,7 @@
 
 # CIRPMC: Critical Illness Risk Prediction Model for COVID-19
 
-CIRPMC: Critical Illness Risk Prediction Model for COVID-19
+CIRPMC: Critical Illness Risk Prediction Model for COVID-19 (https://cirpmc.deepomics.org/)
 
 
 ## Pre-requirements
