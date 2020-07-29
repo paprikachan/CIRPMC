@@ -11,7 +11,9 @@ run <- function(infile, outfile){
   for (f in fs){
     X[[f]] <- as.numeric(X[[f]])
   }
+
   pred_df <- pred_models(model_list, X[, fs])
+  
   write.csv(pred_df, outfile, row.names = F)
 }
 
@@ -28,6 +30,14 @@ pred_models <- function(model_list, X){
   rownames(df) <- rownames(X)
   colnames(df) <- c('LR', 'SVM', 'GBDT', 'KNN', 'NN')
   df$Probability <- df$SVM
+  rownames <- rownames(X[X$`TNF-a` > 0 & X$`TNF-a` < 8.1 
+                   & X$CRP > 0
+                   & X$`IL-2R` > 223 & X$`IL-2R` < 710
+                   & X$`IL-6` > 0 & X$`IL-6` < 7.0
+                   , ])
+  
+  df[rownames(df) %in% rownames, ]$Probability <- 0.01
+  
   df$Cluster <- as.factor(as.numeric(df$Probability >= 0.5))
   df$`Risk group`[df$Cluster == '0'] <- 'Non critical'
   df$`Risk group`[df$Cluster == '1'] <- 'Critical'
