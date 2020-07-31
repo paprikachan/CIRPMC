@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 run <- function(infile, outfile){
-  load('data.Rdata')
+  load('data.RData')
   
   tmp <- read.csv('features.csv')
   tmp$X <- NULL
